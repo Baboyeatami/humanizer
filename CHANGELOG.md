@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.2.0
+
+- Added the `humanize-like-jamie` skill under `skills/humanize-like-jamie/`. It writes or rewrites text in one writer's voice (Jamie Eduardo C. Rosal, a Philippine engineering researcher): a distilled `STYLE.md`, three full sample papers as extracted text, and a no-facts-invented rule. The Claude plugin manifest now loads both skills. `scripts/validate-package.py` accepts the second skill file and the extended Claude skills list.
+- No change to the humanizer patterns. 26 patterns total.
+
 ## 3.1.0
 
 - Added pattern #26 and section F for replies that re-explain context the reader already has (#269). It acts on replies, not standalone writing. 26 patterns total.

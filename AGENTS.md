@@ -4,13 +4,14 @@ This file explains how to change Humanizer without breaking its package or promp
 
 ## What this repo contains
 
-Humanizer is an agent skill written in Markdown. `SKILL.md` is the prompt that agents read. The repo has no build step.
+Humanizer is an agent skill written in Markdown. `SKILL.md` is the prompt that agents read. The repo also ships a second skill, `humanize-like-jamie`, under `skills/`. The repo has no build step.
 
 Keep the skill portable. Do not write instructions that limit it to one or two agent tools.
 
 ## Key files
 
-- `SKILL.md` is the source of truth and the repo's only skill file. It contains portable YAML metadata, an account of why AI text sounds the way it does, and numbered patterns grouped in six sections and ordered by strength and frequency.
+- `SKILL.md` is the source of truth for the Humanizer pattern list. It contains portable YAML metadata, an account of why AI text sounds the way it does, and numbered patterns grouped in six sections and ordered by strength and frequency.
+- `skills/humanize-like-jamie/` holds the second skill: `SKILL.md` (how to write in Jamie's voice), `STYLE.md` (the voice profile), and `samples/` (the sample texts are the ground truth and stay byte-stable unless the user supplies new ones). It must not borrow the numbered patterns; it points at the root skill for the AI-tell pass.
 - `README.md` explains installation, use, and patterns.
 - `CHANGELOG.md` holds the release notes, newest first. Old notes keep the pattern numbers their release used.
 - `.claude-plugin/plugin.json` describes the Claude plugin and points its skill loader at the root `SKILL.md`.

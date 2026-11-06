@@ -98,6 +98,35 @@ Now humanize this text:
 
 Humanizer follows the sample's rhythm, word choice, punctuation, and deliberate quirks, including dashes if you use them.
 
+## Write like Jamie
+
+This fork adds a second skill, `humanize-like-jamie`. It writes or rewrites text in the voice of Jamie Eduardo C. Rosal, a Philippine engineering researcher whose published papers ship with the skill as full sample texts.
+
+Call it directly:
+
+```
+/humanize-like-jamie
+
+[paste your text, or say what to draft]
+```
+
+Or ask in plain language:
+
+```
+Rewrite this abstract so it sounds like Jamie wrote it: [text]
+```
+
+```
+Draft the introduction of a paper about [topic] like Jamie
+```
+
+How it works:
+
+- Rewrites first remove AI tells with the same process Humanizer uses, then re-voice the result as Jamie. Drafts build the text in Jamie's structure, including the IEEE paper skeleton for academic work.
+- All three sample papers (2018, 2022, 2026) ship under `skills/humanize-like-jamie/samples/`, with `STYLE.md` as the distilled profile.
+- Facts, numbers, names, citations, dates never change. The skill asks instead of inventing detail.
+- By default the grammar stays correct. Say "quirks on" for the full voice, including his grammar slips, when you want the exact written fingerprint.
+
 ## How it works
 
 A language model writes whatever is most likely to come next, so by default it makes the choice that fits the widest range of readers and subjects. A person chooses for one reader and one subject. Every tell Humanizer looks for is a form of that default choice: a sentence that signals importance instead of adding a fact, rhythm or formatting applied by rule, an ordinary fact dressed as a pivotal one, text left over from the chat, or a reply that re-explains what the reader already knows.

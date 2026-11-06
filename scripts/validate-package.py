@@ -70,10 +70,17 @@ if len(package_versions) != 1:
     )
 
 skill_files = {path.relative_to(ROOT) for path in ROOT.rglob("SKILL.md")}
-if SKILL_PATH.is_symlink() or skill_files != {Path("SKILL.md")}:
-    raise SystemExit("Keep one regular SKILL.md at the repo root")
-if PLUGIN.get("skills") != ["./"]:
-    raise SystemExit("Point the Claude plugin skill loader at the repo root")
+SECOND_SKILL_MD = Path("skills") / "humanize-like-jamie" / "SKILL.md"
+if SKILL_PATH.is_symlink() or skill_files != {Path("SKILL.md"), SECOND_SKILL_MD}:
+    raise SystemExit(
+        "Keep two regular SKILL.md files: one at the repo root and one at "
+        f"{SECOND_SKILL_MD}. Found: {sorted(str(p) for p in skill_files)}"
+    )
+if PLUGIN.get("skills") != ["./", "./" + str(SECOND_SKILL_MD.parent)]:
+    raise SystemExit(
+        "Point the Claude plugin skill loader at the repo root and "
+        f"./{SECOND_SKILL_MD.parent}"
+    )
 if CURSOR_PLUGIN.get("name") != "humanizer":
     raise SystemExit("Set the Cursor plugin name to humanizer")
 if "skills" in CURSOR_PLUGIN:
