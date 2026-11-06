@@ -31,7 +31,7 @@ Humanizer checks for [26 patterns](#the-26-patterns) in all.
 
 ## Installation
 
-Once installed, the skill answers to `/humanizer`.
+Once installed, Humanizer answers to `/humanizer`. This fork also ships a second skill, `humanize-like-jamie`; see [Write like Jamie](#write-like-jamie).
 
 ### Claude Code
 
@@ -59,6 +59,27 @@ npx skills add blader/humanizer --global --agent '*'
 ```
 
 This installs Humanizer for every agent the Skills CLI supports, including Gemini CLI, GitHub Copilot, and Windsurf. Leave off `--global` in any command above to install it only in the current project. For an agent the Skills CLI does not know, copy `SKILL.md` into its skill folder.
+
+### Getting both skills
+
+The commands above install from the upstream repository, which has only Humanizer. This fork (`Baboyeatami/humanizer`) adds the second skill, so install from it instead:
+
+```bash
+npx skills add Baboyeatami/humanizer --global --agent '*'
+```
+
+When the picker shows only Humanizer, add `--full-depth` so the CLI lists the second skill too:
+
+```bash
+npx skills add Baboyeatami/humanizer --global --agent '*' --full-depth
+```
+
+In Claude Code, the plugin install includes both skills:
+
+```text
+/plugin marketplace add Baboyeatami/humanizer
+/plugin install humanizer@humanizer
+```
 
 ## Usage
 
@@ -119,6 +140,22 @@ Rewrite this abstract so it sounds like Jamie wrote it: [text]
 ```
 Draft the introduction of a paper about [topic] like Jamie
 ```
+
+To rewrite a file, name the file:
+
+```
+Let humanize-like-jamie rewrite docs/methodology-draft.md in Jamie's voice
+```
+
+A rewrite example:
+
+**Before (AI-sounding):**
+
+> We are thrilled to present a budget-friendly monitoring system. This is not merely a sensor; it's a comprehensive solution for flood-prone communities. Let that sink in.
+
+**After:**
+
+> This study aims to develop a low-cost water level monitoring system that collects readings from flood-prone communities to help the community improve flood safety. The device was made-up using an ultrasonic sensor and GSM module which transmit untreated water level data to the community. Consequently, the system is capable of measuring water level and sending early warnings that is important in community flood response.
 
 How it works:
 
